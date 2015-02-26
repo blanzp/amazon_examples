@@ -6,8 +6,6 @@ from boto.sqs.connection import SQSConnection
 from boto.sqs.message import Message
 import unittest
 import ConfigParser
-#https://sqs.us-west-2.amazonaws.com/963440210241/test_queue
-# test_queue
 
 config = ConfigParser.ConfigParser()
 config.read("/home/blanzp/amazon.cfg")
