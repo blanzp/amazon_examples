@@ -45,6 +45,8 @@ class SMSMessageTest(unittest.TestCase):
         self.assertEquals(msg_created, msg_sent)
         read_msg = q.read()
         self.assertIsNotNone(read_msg)
+        print 'written', msg_created.get_body()
+        print 'read', read_msg.get_body()
         self.assertEquals(msg_created.get_body(), read_msg.get_body())
 
     @classmethod
