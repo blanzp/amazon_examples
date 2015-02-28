@@ -12,12 +12,27 @@ conn = connect_to_region(
     aws_access_key_id=config.get('amazon', 'AWSAccessKeyId'),
     aws_secret_access_key=config.get('amazon', 'AWSSecretKey'))
 
-q = conn.create_queue('mack')
+q = conn.get_queue('halo_man_position')
 print 'queue is', q
+
 msg = Message()
-msg.set_body('hello there pops')
+msg.set_body('i moved to new location')
+
+msg.message_attributes = {
+    "latitude": {
+        "data_type": "Number",
+        "string_value": "21212"
+    },
+    "longitude": {
+        "data_type": "Number",
+        "string_value": "2323"
+    }
+}
+
 msg_sent = q.write(msg)
-#msg_received = q.read()
-#print msg_received.get_body()
+
+# now read the message
+msg_received = q.read()
+print msg_received.get_body()
 
 conn.close()
