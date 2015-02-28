@@ -6,7 +6,7 @@ use_plugin("python.install_dependencies")
 use_plugin("python.flake8")
 use_plugin("python.coverage")
 use_plugin("python.distutils")
-
+use_plugin("python.integrationtest")
 
 name = "amazon_examples"
 default_task = "run_unit_tests"
@@ -14,4 +14,5 @@ default_task = "run_unit_tests"
 
 @init
 def set_properties(project):
-    pass
+    project.build_depends_on('boto')
+
